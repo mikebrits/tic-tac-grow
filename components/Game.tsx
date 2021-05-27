@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from 'utils/hooks';
-import { pickUpPiece, Piece, placePiece, selectGame } from 'utils/reducers/gameSlice';
+import { pickUpPiece, Piece, placePiece, selectGame } from 'reducers/gameSlice';
 import { AvailablePieces } from 'components/AvailablePieces';
 import { Board } from 'components/Board';
 
@@ -9,7 +9,7 @@ export const Game = () => {
 		currentPlayer,
 		board,
 		availablePieces,
-		isGameOver,
+		// isGameOver,
 		message,
 		heldPiece,
 	} = useAppSelector(selectGame);
@@ -26,23 +26,23 @@ export const Game = () => {
 	};
 
 	return (
-		<>
-			{message}
-			{heldPiece?.player}
-			{heldPiece?.value}
+		<div className="flex flex-col items-center">
+			<p>{message}</p>
 			<AvailablePieces
+				enabled={currentPlayer === 'A'}
 				onSelectPiece={handlePickUpPiece}
+				selectedPiece={heldPiece}
 				pieces={availablePieces.A}
 				player={'A'}
-				enabled={!isGameOver && currentPlayer === 'A'}
 			/>
 			<Board board={board} onPlace={({ row, col }) => handlePlacePiece({ row, col })} />
 			<AvailablePieces
+				enabled={currentPlayer === 'B'}
 				onSelectPiece={handlePickUpPiece}
 				pieces={availablePieces.B}
+				selectedPiece={heldPiece}
 				player={'B'}
-				enabled={!isGameOver && currentPlayer === 'B'}
 			/>
-		</>
+		</div>
 	);
 };

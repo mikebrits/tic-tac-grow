@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import gameReducer from './reducers/gameSlice';
+import gameReducer from '../reducers/gameSlice';
 
 export const store = configureStore({
 	reducer: {

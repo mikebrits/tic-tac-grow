@@ -1,5 +1,5 @@
 import { isBoardFull, gameHasWinner } from '../gameLogic';
-import { Board } from '../reducers/gameSlice';
+import { Board } from '../../reducers/gameSlice';
 
 describe('gameLogic', () => {
 	it('should return false if there are no pieces placed', function () {

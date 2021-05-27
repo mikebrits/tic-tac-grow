@@ -1,4 +1,4 @@
-import { Board } from './reducers/gameSlice';
+import { Board } from '../reducers/gameSlice';
 
 export const gameHasWinner = (board: Board): boolean => {
 	const combinations = [

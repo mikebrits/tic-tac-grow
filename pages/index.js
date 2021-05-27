@@ -1,5 +1,9 @@
 import { Game } from '../components/Game';
 
 export default function Home() {
-	return <Game />;
+	return (
+		<div className="h-screen bg-gray-300 flex items-center justify-center">
+			<Game />
+		</div>
+	);
 }

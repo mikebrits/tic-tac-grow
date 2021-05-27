@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { gameHasWinner, isBoardFull } from '../gameLogic';
-import { RootState } from '../store';
+import { gameHasWinner, isBoardFull } from '../utils/gameLogic';
+import { RootState } from '../utils/store';
 
 export type Player = 'A' | 'B';
 
@@ -26,7 +26,7 @@ export interface AvailablePieces {
 }
 
 export const initialState: GameState = {
-	message: '',
+	message: "Player A's turn",
 	board: [
 		[undefined, undefined, undefined],
 		[undefined, undefined, undefined],
@@ -88,6 +88,7 @@ export const gameSlice = createSlice({
 			}
 
 			state.currentPlayer = nextPlayer;
+			state.message = `Player ${nextPlayer}'s turn`;
 		},
 
 		pickUpPiece: (state, action: PayloadAction<Piece>) => {
